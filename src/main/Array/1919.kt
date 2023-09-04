@@ -3,7 +3,7 @@ import kotlin.math.abs
 // 1919
 
 fun main() {
-    val br = java.io.BufferedReader(java.io.InputStreamReader(System.`in`))
+    var br = java.io.BufferedReader(java.io.InputStreamReader(System.`in`))
     val a1 = IntArray(26)
     val a2 = IntArray(26)
     var ret = 0
