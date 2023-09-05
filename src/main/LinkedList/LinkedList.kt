@@ -1,8 +1,29 @@
 
-class LinkedList<K> {
+class LinkedList<K>: Iterable<K>, Collection<K> {
     private var head: Node<K>? = null
     private var tail: Node<K>? = null
-    var size = 0
+    override var size = 0
+    override fun isEmpty(): Boolean {
+        return size == 0
+    }
+
+    override fun containsAll(elements: Collection<K>): Boolean {
+        for (element in elements){
+            if (!contains(element)) return false
+        }
+        return true
+    }
+
+    override fun contains(element: K): Boolean {
+        for (value in this){
+            if (value == element) return true
+        }
+        return false
+    }
+
+    override fun iterator(): Iterator<K> {
+        return LinkedListIterator<K>(this)
+    }
 
     override fun toString(): String {
         return head.toString()
@@ -14,7 +35,7 @@ class LinkedList<K> {
         return head
     }
     fun append(value: K): Node<K>? {
-        if(size == 0) return push(value)
+        if(isEmpty()) return push(value)
 
         tail = insertAfter(value, tail)
         return tail
@@ -57,6 +78,9 @@ class LinkedList<K> {
         }
         return null
     }
+    fun getHead(): Node<K>? {
+        return head
+    }
 }
 
 
@@ -67,5 +91,21 @@ data class Node<K>(var value: K, var next: Node<K>? = null, var prev: Node<K>? =
         } else{
             "$value"
         }
+    }
+}
+
+class LinkedListIterator<K>(private val list: LinkedList<K>): Iterator<K> {
+    private var idx = 0
+    private var curNode: Node<K>? = null
+    override fun hasNext(): Boolean {
+        return idx < list.size
+    }
+
+    override fun next(): K {
+        if (!hasNext()) throw ArrayIndexOutOfBoundsException()
+        curNode = if (idx == 0) list.getHead()
+        else curNode?.next
+        idx ++
+        return curNode!!.value
     }
 }
