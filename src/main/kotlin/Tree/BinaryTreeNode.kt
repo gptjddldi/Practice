@@ -2,7 +2,7 @@ package Tree;
 import kotlin.math.max
 
 typealias Visitor2<T> = (BinaryTreeNode<T>?) -> Unit
-class BinaryTreeNode<T> (val value: T) {
+class BinaryTreeNode<T> (var value: T) {
     var leftChild: BinaryTreeNode<T>? = null
     var rightChild: BinaryTreeNode<T>? = null
 
@@ -70,4 +70,7 @@ class BinaryTreeNode<T> (val value: T) {
     fun optimizedDeserialize(lis: MutableList<T?>): BinaryTreeNode<T?>?{
         return deserialize(lis.asReversed())
     }
+    val min: BinaryTreeNode<T>?
+        get() = leftChild?.min ?: this
 }
+
