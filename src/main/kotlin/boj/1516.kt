@@ -1,3 +1,5 @@
+package boj
+
 import java.io.StreamTokenizer
 import kotlin.math.max
 
