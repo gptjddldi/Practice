@@ -1,4 +1,8 @@
 package leetcode
+
+import kotlin.math.min
+import kotlin.math.pow
+
 // dp[i] = min(dp[i-1], dp[i-4], dp[i-9] ... (최대 100개 )) + 1
 
 fun numSquares(n: Int): Int {
