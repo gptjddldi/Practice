@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	fmt.Println(heightChecker([]int{1, 2, 3, 1, 10, 2}))
 }
