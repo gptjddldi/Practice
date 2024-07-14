@@ -1,12 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"bytes"
-)
+import "fmt"
 
 func main() {
-	a := []byte("TestKey1")
-	b := []byte("TestKey1001")
-	fmt.Println(bytes.Compare(a, b))
+	a := "K4(ON(SO3)2)2"
+
+	fmt.Println(countOfAtoms(a))
 }
